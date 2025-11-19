@@ -245,12 +245,5 @@ branch-1
 //gkjpok
 //hnijnkj
 //jgvkjlk
-//dchjes
-//dfgshj
-//dvbjhsdvkd
-//yfkuhghkhki
-//rghrejgfegjgf
-//zdrghjxrhbh
-//jknklnkl
 //xfdbvshdrv,exjd
 //fdjghvkjz
