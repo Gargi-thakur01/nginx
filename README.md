@@ -244,8 +244,6 @@ branch-1
 //fgbvkjrjgks
 //edit
 //gkjpok
-//hnijnkj
-//jgvkjlk
 //xfdbvshdrv,exjd
 //fdjghvkjz
 //dcbhjd
