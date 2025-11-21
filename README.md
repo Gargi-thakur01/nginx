@@ -243,9 +243,6 @@ glkjlkm
 branch-1
 //fgbvkjrjgks
 //edit
-//gkjpok
-//xfdbvshdrv,exjd
-//fdjghvkjz
 //dcbhjd
 //fsjkgbjksrjgl
 //gfhbvsrjid
