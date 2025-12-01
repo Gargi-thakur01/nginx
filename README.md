@@ -242,10 +242,6 @@ glkjlkm
 //djfchieweik
 branch-1
 //fgbvkjrjgks
-//edit
-//dcbhjd
-//fsjkgbjksrjgl
-//gfhbvsrjid
 //dfcker
 //vfjg
 //dfhrerifoei
