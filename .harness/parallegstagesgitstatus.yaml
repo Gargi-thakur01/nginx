@@ -1,0 +1,135 @@
+pipeline:
+  name: paralleg-stages-git-status
+  identifier: parallegstagesgitstatus
+  tags: {}
+  projectIdentifier: gargi_pj
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: gargiGithubConnector
+        build: <+input>
+        sparseCheckout: []
+  stages:
+    - parallel:
+        - stage:
+            identifier: Test_Stage_1
+            type: CI
+            name: Test Stage 1
+            spec:
+              cloneCodebase: true
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_Test_1
+                      type: Run
+                      name: Run Test 1
+                      spec:
+                        shell: Bash
+                        command: |
+                          echo "Running tests in slice 1/5"
+                          sleep 10
+                          echo "Tests completed"
+            description: ""
+        - stage:
+            identifier: Test_Stage_2
+            type: CI
+            name: Test Stage 2
+            spec:
+              cloneCodebase: true
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_Test_2
+                      type: Run
+                      name: Run Test 2
+                      spec:
+                        shell: Bash
+                        command: |
+                          echo "Running tests in slice 2/5"
+                          sleep 10
+                          echo "Tests completed"
+        - stage:
+            identifier: Test_Stage_3
+            type: CI
+            name: Test Stage 3
+            spec:
+              cloneCodebase: true
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_Test_3
+                      type: Run
+                      name: Run Test 3
+                      spec:
+                        shell: Bash
+                        command: |
+                          echo "Running tests in slice 3/5"
+                          sleep 10
+                          echo "Tests completed"
+        - stage:
+            identifier: Test_Stage_4
+            type: CI
+            name: Test Stage 4
+            spec:
+              cloneCodebase: true
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_Test_4
+                      type: Run
+                      name: Run Test 4
+                      spec:
+                        shell: Bash
+                        command: |
+                          echo "Running tests in slice 4/5"
+                          sleep 10
+                          echo "Tests completed"
+        - stage:
+            identifier: Test_Stage_5
+            type: CI
+            name: Test Stage 5
+            spec:
+              cloneCodebase: true
+              platform:
+                os: Linux
+                arch: Amd64
+              runtime:
+                type: Cloud
+                spec: {}
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_Test_5
+                      type: Run
+                      name: Run Test 5
+                      spec:
+                        shell: Bash
+                        command: |
+                          echo "Running tests in slice 5/5"
+                          sleep 10
+                          echo "Tests completed"
