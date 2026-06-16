@@ -1,0 +1,23 @@
+pipeline:
+  stages:
+    - name: Stage
+      id: stage
+      steps:
+        - name: Step
+          id: step
+          run: echo "hello world"
+        - name: sasdfds
+          id: sasdfds
+          build:
+            uses: gitCloneStep@1.3.1
+            with:
+              connector: gargi_github
+              repo_name: https://github.com/Gargi-thakur01/nginx
+              build_target: Commit
+              commit_sha: 113628c6b0edb8c33f70e7ef37dfa49d145a7787
+      clone:
+        ref:
+          type: branch
+          name: master
+        enabled: true
+        connector: gargi_github
