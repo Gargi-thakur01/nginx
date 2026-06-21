@@ -198,7 +198,7 @@ You may test NGINX operation using `curl`.
 ```bash
 curl localhost
 ```
-
+gi..hlk
 The output of which should start with:
 
 ```html
