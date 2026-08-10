@@ -243,15 +243,3 @@ ddjcoiwjox
 //djfchieweikbvjbknk
 /kklmokookomknkl,ijoiijo
 //fm vdmz
-//nckdsnlwajskknkjnk
-kvdsmclkac,m s
-//djfchieweikshdhai. nknkkl
-//sjbxjawi
-//jvcskxalojnkjnk,mk
-//bkjljlu
-//cdnjnckwa
-//dnvkjdsvkdml
-//DNJSDKMS
-//dncjsnkj
-//BDCJSJAO
-// mdskskxdlwi
