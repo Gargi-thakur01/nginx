@@ -1,0 +1,15 @@
+inputSet:
+  name: PR-trigger-inputset
+  tags: {}
+  identifier: PRtrigger_inputset
+  orgIdentifier: default
+  projectIdentifier: gargi_pj
+  pipeline:
+    identifier: parallegstagesgitstatus
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
