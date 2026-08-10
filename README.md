@@ -234,7 +234,7 @@ glkjlkm
 ////Generating trigger for new tag 2
 ///trying again
 //yoooo
-mn,blknk;
+mn,blknk;bjknk
 ddjcoiwjox
 // kklml,jbtyfh
 
