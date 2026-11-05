@@ -1,0 +1,14 @@
+inputSet:
+  name: gitstatuspush
+  identifier: gitstatuspush
+  orgIdentifier: default
+  projectIdentifier: Project1
+  pipeline:
+    identifier: githubstatuscheckgit
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
