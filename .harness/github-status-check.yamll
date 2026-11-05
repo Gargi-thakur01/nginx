@@ -1,0 +1,367 @@
+pipeline:
+  identifier: githubstatuscheckgit
+  name: github-status-check-git
+  projectIdentifier: Project1
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gargi_github
+        repoName: nginx
+        build: <+input>
+        sparseCheckout: []
+  variables:
+    - name: checkName
+      type: String
+      value: expr-check
+    - name: emptyName
+      type: String
+      value: ""
+    - name: runSkipped
+      type: String
+      value: "false"
+  stages:
+    - parallel:
+        - stage:
+            identifier: s1_custom
+            name: s1_custom
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                type: KubernetesDirect
+                spec:
+                  connectorRef: test
+                  namespace: harness-delegate-ng
+                  automountServiceAccountToken: true
+                  nodeSelector: {}
+                  os: Linux
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s1"
+            sendGitStatus:
+              enabled: true
+              name: custom-s1
+        - stage:
+            identifier: s2_disabled_named
+            name: s2_disabled_named
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s2"
+            sendGitStatus:
+              enabled: false
+              name: hidden-s2
+        - stage:
+            identifier: s3_name_only
+            name: s3_name_only
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s3"
+            sendGitStatus:
+              name: hidden-s3
+        - stage:
+            identifier: s4_enabled_noname
+            name: s4_enabled_noname
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s4"
+            sendGitStatus:
+              enabled: true
+        - stage:
+            identifier: s5_disabled
+            name: s5_disabled
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s5"
+            sendGitStatus:
+              enabled: false
+        - stage:
+            identifier: s6_noblock
+            name: s6_noblock
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s6"
+        - stage:
+            identifier: s7_pipeline_var
+            name: s7_pipeline_var
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s7"
+            sendGitStatus:
+              enabled: true
+              name: <+pipeline.variables.checkName>
+        - stage:
+            identifier: s8_long_name
+            name: s8_long_name
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s8"
+            sendGitStatus:
+              enabled: true
+              name: this-is-a-very-long-custom-status-name-over-thirty
+        - stage:
+            identifier: s9_empty_var
+            name: s9_empty_var
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s9"
+            sendGitStatus:
+              enabled: true
+              name: <+pipeline.variables.emptyName>
+        - stage:
+            identifier: s10_runtime
+            name: s10_runtime
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s10"
+            sendGitStatus:
+              enabled: true
+              name: runtime-s10
+        - stage:
+            identifier: s11_stage_var
+            name: s11_stage_var
+            type: CI
+            variables:
+              - name: statusName
+                type: String
+                value: stage-var-name
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s11"
+            sendGitStatus:
+              enabled: true
+              name: <+stage.variables.statusName>
+        - stage:
+            identifier: s12_skipped_enabled
+            name: s12_skipped_enabled
+            type: CI
+            when:
+              pipelineStatus: Success
+              condition: <+pipeline.variables.runSkipped> == "true"
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s12"
+            sendGitStatus:
+              enabled: true
+              name: skipped-s12
+        - stage:
+            identifier: s13_skipped_disabled
+            name: s13_skipped_disabled
+            type: CI
+            when:
+              pipelineStatus: Success
+              condition: <+pipeline.variables.runSkipped> == "true"
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s13"
+            sendGitStatus:
+              enabled: false
+              name: skipped-s13
+        - stage:
+            identifier: s14_no_clone
+            name: s14_no_clone
+            type: CI
+            spec:
+              cloneCodebase: false
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: echo "s14"
+            sendGitStatus:
+              enabled: true
+              name: noclone-s14
+        - stage:
+            identifier: s15_failing
+            name: s15_failing
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                useFromStage: s1_custom
+              execution:
+                steps:
+                  - step:
+                      identifier: Run_1
+                      type: Run
+                      name: Run_1
+                      spec:
+                        connectorRef: gt_docker
+                        image: alpine
+                        shell: Sh
+                        command: |-
+                          echo "s15"
+                          exit 1
+            sendGitStatus:
+              enabled: true
+              name: failed-s15
