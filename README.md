@@ -16,7 +16,7 @@
 //jkcbjskax mz
 // jhbcjska
 // jdncksnkjnckls
-// jbvcjdsk jcbjsnk jncksj jcshdka
+// jbvcjdsk jcbjsnk jncksj jcshdka dcjsncjj
 // jxnxkncks
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/9335b488-ffcc-4157-8364-2370a0b70ad0">
